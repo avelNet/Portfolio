@@ -78,6 +78,11 @@ h2{font-size:clamp(30px,7vw,48px);font-weight:700}
 .book-form label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a8271;font-weight:600}
 .book-form input,.book-form select{width:100%;padding:14px 16px;border-radius:6px;border:1.5px solid #cfc8b8;background:#fff;color:var(--coal);font-family:'Golos Text';font-size:15px}
 .book-form button{margin-top:8px;padding:16px;border:none;border-radius:6px;background:var(--coal);color:var(--bone);font-family:'Oswald';text-transform:uppercase;letter-spacing:.1em;font-weight:600;font-size:15px;cursor:pointer}
+.chips,.slots{display:flex;flex-wrap:wrap;gap:8px}
+.chip,.slot{font-family:'Golos Text';font-size:14px;font-weight:500;padding:10px 14px;border-radius:6px;border:1.5px solid #cfc8b8;background:#fff;color:var(--coal);cursor:pointer}
+.chip.on{background:var(--coal);color:var(--bone);border-color:var(--coal)}
+.slot.on{background:var(--brass);border-color:var(--brass);color:var(--coal);font-weight:700}
+.hint{font-size:12px;color:#8a8271;margin-top:6px}
 .ok{display:none;margin-top:16px;font-size:15px;color:#3e7a4e;font-weight:600}
 .book .fine{font-size:12px;color:#8a8271;margin-top:16px}
 
@@ -142,15 +147,20 @@ footer a{color:var(--brass);text-decoration:none;font-weight:600}
     <div class="book">
       <h2>Онлайн-запись</h2>
       <p>Выбери барбера и время. Напоминание придёт за 2 часа до визита — не проспишь.</p>
-      <form class="book-form" onsubmit="event.preventDefault();document.getElementById('ok').style.display='block';this.reset()">
+      <form class="book-form" id="bform">
         <div><label for="b1">Услуга</label>
         <select id="b1"><option>Стрижка</option><option>Стрижка + борода</option><option>Борода / бритьё</option><option>Отец + сын</option></select></div>
         <div><label for="b2">Барбер</label>
         <select id="b2"><option>Любой свободный</option><option>Марк</option><option>Даня</option><option>Артём</option></select></div>
+        <div><label>Дата</label>
+        <div class="chips"><button type="button" class="chip on">Сегодня</button><button type="button" class="chip">Завтра</button><button type="button" class="chip">Послезавтра</button></div></div>
+        <div><label>Время</label>
+        <div class="slots"><button type="button" class="slot">10:00</button><button type="button" class="slot">11:30</button><button type="button" class="slot">13:00</button><button type="button" class="slot">14:30</button><button type="button" class="slot">16:00</button><button type="button" class="slot">17:30</button><button type="button" class="slot">19:00</button><button type="button" class="slot">20:30</button></div>
+        <div class="hint" id="bhint">Выберите время, чтобы записаться</div></div>
         <div><label for="b3">Телефон</label><input id="b3" type="tel" placeholder="+7 ___ ___-__-__" required></div>
-        <button type="submit">Выбрать время →</button>
+        <button type="submit" id="bbtn">Записаться</button>
       </form>
-      <div class="ok" id="ok">Готово. Администратор подтвердит запись в течение 10 минут.</div>
+      <div class="ok" id="ok"></div>
       <div class="fine">Демо-виджет. В рабочей версии — ваша запись из YClients или Telegram-бот.</div>
     </div>
   </section>
@@ -172,5 +182,20 @@ footer a{color:var(--brass);text-decoration:none;font-weight:600}
   <div>Сайт за 3 дня — <a href="https://t.me/avelexe" target="_blank" rel="noopener">напишите мне</a></div>
 </footer>
 
+<script>
+(function(){
+  var day='Сегодня', time=null;
+  var chips=document.querySelectorAll('.chip'), slots=document.querySelectorAll('.slot');
+  var btn=document.getElementById('bbtn'), hint=document.getElementById('bhint'), ok=document.getElementById('ok');
+  chips.forEach(function(c){c.addEventListener('click',function(){chips.forEach(function(x){x.classList.remove('on')});c.classList.add('on');day=c.textContent;});});
+  slots.forEach(function(s){s.addEventListener('click',function(){slots.forEach(function(x){x.classList.remove('on')});s.classList.add('on');time=s.textContent;btn.textContent='Записаться на '+time;hint.style.display='none';});});
+  document.getElementById('bform').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!time){hint.style.display='block';hint.textContent='Сначала выберите время ↑';return;}
+    ok.textContent='Вы записаны: '+day.toLowerCase()+', '+time+'. Напоминание придёт за 2 часа до визита.';
+    ok.style.display='block';
+  });
+})();
+</script>
 </body>
 </html>
