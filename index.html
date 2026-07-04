@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only light">
+<title>Павел — лендинги под ваш бизнес · любая ниша</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#101319; --panel:#181C25; --paper:#EDEEF2; --mute:#8B93A3; --amber:#F2B441; --line:#262B37;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--night)}
+body{font-family:'Golos Text',sans-serif;background:var(--night);color:var(--paper);line-height:1.6}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Unbounded',sans-serif;font-weight:700;letter-spacing:-.01em}
+
+/* hero */
+.hero{padding:72px 0 56px}
+.hello{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:6px 14px}
+.dot{width:7px;height:7px;border-radius:50%;background-image:linear-gradient(#5BC77E,#5BC77E)}
+.hero h1{font-size:clamp(30px,7.4vw,56px);line-height:1.12;margin:22px 0 18px}
+.hero h1 span{color:var(--amber)}
+.hero p{font-size:16px;color:var(--mute);max-width:520px}
+.hero p b{color:var(--paper);font-weight:500}
+.cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:12px}
+.btn:active{transform:scale(.97)}
+.btn-amber{background-image:linear-gradient(var(--amber),var(--amber));color:#1a1405}
+.btn-ghost{border:1.5px solid var(--line);color:var(--paper)}
+
+section{padding:48px 0}
+h2{font-size:clamp(22px,5vw,32px);margin-bottom:8px}
+.sub{color:var(--mute);font-size:15px;margin-bottom:28px}
+
+/* works */
+.works{display:grid;gap:18px}
+.work{display:block;text-decoration:none;background-image:linear-gradient(var(--panel),var(--panel));border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .2s}
+.work:hover{border-color:var(--amber)}
+.w-bar{display:flex;align-items:center;gap:6px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.w-bar i{width:10px;height:10px;border-radius:50%;background-image:linear-gradient(var(--line),var(--line))}
+.w-bar .url{margin-left:8px;font-size:12px;color:var(--mute)}
+.w-body{padding:20px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.w-body h3{font-size:17px;color:var(--paper)}
+.w-body p{font-size:14px;color:var(--mute);margin-top:6px;max-width:420px}
+.chips{display:flex;gap:6px;flex-shrink:0}
+.chips i{width:22px;height:22px;border-radius:6px;border:1px solid rgba(255,255,255,.12)}
+.w-open{font-size:13px;color:var(--amber);font-weight:600;padding:16px 20px;border-top:1px solid var(--line);display:block}
+
+/* services */
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.sv{background-image:linear-gradient(var(--panel),var(--panel));border:1px solid var(--line);border-radius:14px;padding:20px}
+.sv h3{font-size:15px;color:var(--amber);margin-bottom:8px}
+.sv p{font-size:14px;color:var(--mute)}
+
+/* process */
+.steps{display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.step{padding:0 0 26px 22px;position:relative}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background-image:linear-gradient(var(--amber),var(--amber))}
+.step h3{font-size:15px}
+.step p{font-size:14px;color:var(--mute);margin-top:4px}
+
+/* final CTA */
+.final{background-image:linear-gradient(var(--panel),var(--panel));border:1px solid var(--line);border-radius:20px;padding:40px 24px;text-align:center}
+.final h2{margin-bottom:12px}
+.final p{color:var(--mute);max-width:440px;margin:0 auto 24px;font-size:15px}
+.tg{font-size:14px;color:var(--mute);margin-top:14px}
+.tg a{color:var(--amber);text-decoration:none;font-weight:600}
+
+footer{padding:28px 0 40px;font-size:13px;color:var(--mute);text-align:center}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hello"><span class="dot"></span>беру заказы · отвечаю быстро</div>
+    <h1>Лендинг под ваш бизнес — <span>за 3 дня</span></h1>
+    <p>Привет, я Павел. Делаю продающие сайты под любую нишу — от салона красоты до стройки и онлайн-услуг: <b>лендинг + приём заявок или онлайн-запись + карточки в 2ГИС и Яндекс.Картах</b>. Дизайн собирается под ваш бизнес, а не по шаблону.</p>
+    <div class="cta-row">
+      <a class="btn btn-amber" href="https://t.me/avelexe" target="_blank" rel="noopener">Написать в Telegram</a>
+      <a class="btn btn-ghost" href="#works">Смотреть работы</a>
+    </div>
+  </div>
+
+  <section id="works">
+    <h2>Примеры работ</h2>
+    <div class="sub">Три разные ниши — чтобы показать, что стиль каждый раз свой. Заведения вымышленные, дизайн и функциональность настоящие. Ваш лендинг соберу под вашу нишу — покажу похожие примеры в переписке.</div>
+    <div class="works">
+
+      <a class="work" href="demo-beauty.html">
+        <div class="w-bar"><i></i><i></i><i></i><span class="url">пудра · студия маникюра</span></div>
+        <div class="w-body">
+          <div><h3>ПУДРА — студия маникюра</h3><p>Интерактивная палитра оттенков, прайс, мастера, форма онлайн-записи.</p></div>
+          <div class="chips"><i style="background-image:linear-gradient(#F7F3EE,#F7F3EE)"></i><i style="background-image:linear-gradient(#B04A5A,#B04A5A)"></i><i style="background-image:linear-gradient(#2B2024,#2B2024)"></i></div>
+        </div>
+        <span class="w-open">Открыть демо →</span>
+      </a>
+
+      <a class="work" href="demo-barber.html">
+        <div class="w-bar"><i></i><i></i><i></i><span class="url">северный · барбершоп</span></div>
+        <div class="w-body">
+          <div><h3>СЕВЕРНЫЙ — барбершоп</h3><p>Прайс отрывными талонами, барберы, запись с выбором мастера.</p></div>
+          <div class="chips"><i style="background-image:linear-gradient(#16181D,#16181D)"></i><i style="background-image:linear-gradient(#C08A3E,#C08A3E)"></i><i style="background-image:linear-gradient(#E9E4DA,#E9E4DA)"></i></div>
+        </div>
+        <span class="w-open">Открыть демо →</span>
+      </a>
+
+      <a class="work" href="demo-auto.html">
+        <div class="w-bar"><i></i><i></i><i></i><span class="url">гараж №9 · автосервис</span></div>
+        <div class="w-body">
+          <div><h3>ГАРАЖ №9 — автосервис</h3><p>Заявка в виде наряд-заказа: марка, проблема, телефон — мастеру в Telegram.</p></div>
+          <div class="chips"><i style="background-image:linear-gradient(#ECEDEA,#ECEDEA)"></i><i style="background-image:linear-gradient(#F26A1B,#F26A1B)"></i><i style="background-image:linear-gradient(#1C1E20,#1C1E20)"></i></div>
+        </div>
+        <span class="w-open">Открыть демо →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Что делаю</h2>
+    <div class="sub">Собираю комплект, который приводит клиентов, а не просто «висит в интернете».</div>
+    <div class="grid3">
+      <div class="sv"><h3>Лендинг</h3><p>Одностраничный сайт под вашу нишу и задачу: услуги, цены, преимущества, контакты. Быстрый и удобный с телефона.</p></div>
+      <div class="sv"><h3>Заявки и запись</h3><p>Форма заявки с уведомлением в Telegram, онлайн-запись, калькулятор цены, квиз — то, что нужно именно вашему бизнесу.</p></div>
+      <div class="sv"><h3>Карты</h3><p>Оформление и прокачка карточек в 2ГИС и Яндекс.Картах — оттуда приходит больше всего локальных клиентов.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Как проходит работа</h2>
+    <div class="sub">Без созвонов на час и технических терминов.</div>
+    <div class="steps">
+      <div class="step"><h3>1. Пишете в Telegram</h3><p>Рассказываете, что за бизнес. Я задаю 5–7 вопросов и показываю похожие примеры.</p></div>
+      <div class="step"><h3>2. Черновик за 1–2 дня</h3><p>Присылаю ссылку на первый вариант. Правим вместе, пока не понравится.</p></div>
+      <div class="step"><h3>3. Запуск</h3><p>Подключаю запись, домен, карты. Показываю, как самим менять цены и тексты.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="final">
+      <h2>Обсудим ваш сайт?</h2>
+      <p>Напишите пару слов о вашем бизнесе — любая ниша, любой формат. В ответ пришлю подходящие примеры и назову цену. Бесплатно и ни к чему не обязывает.</p>
+      <a class="btn btn-amber" href="https://t.me/avelexe" target="_blank" rel="noopener">Написать в Telegram</a>
+      <div class="tg">или напрямую: <a href="https://t.me/avelexe" target="_blank" rel="noopener">@avelexe</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Павел · лендинги под любую нишу · Telegram: @avelexe</footer>
+
+</body>
+</html>

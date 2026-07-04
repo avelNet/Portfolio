@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only light">
+<title>ГАРАЖ №9 — автосервис · заявка онлайн</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --asphalt:#1C1E20; --concrete:#ECEDEA; --orange:#F26A1B; --panel:#fff; --mute:#6d7069; --line:#d8d9d3;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--concrete);color-scheme:only light}
+body{font-family:'Golos Text',sans-serif;background:var(--concrete);color:var(--asphalt);line-height:1.55}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.disp{font-family:'Russo One',sans-serif;font-weight:400;letter-spacing:.01em}
+
+.hazard{height:8px;background:repeating-linear-gradient(-45deg,var(--orange) 0 14px,var(--asphalt) 14px 28px)}
+
+header{position:sticky;top:0;background:rgba(236,237,234,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-family:'Russo One';font-size:19px;text-transform:uppercase}
+.logo b{color:var(--orange)}
+.nav a.btn-s{font-size:13px;font-weight:600;color:#fff;background:var(--asphalt);padding:9px 16px;border-radius:6px;text-decoration:none}
+
+/* hero */
+.hero{padding:52px 0 44px}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);font-weight:600}
+.hero h1{font-size:clamp(38px,9vw,72px);line-height:1.04;margin:14px 0 16px;text-transform:uppercase}
+.hero p{font-size:16px;max-width:460px;color:#494c46}
+.hero-cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:8px}
+.btn:active{transform:scale(.97)}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-line{border:1.5px solid var(--asphalt);color:var(--asphalt)}
+.trust{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap}
+.trust div{font-size:13px;color:var(--mute)}
+.trust b{display:block;font-family:'Russo One';font-size:22px;color:var(--asphalt)}
+
+section{padding:50px 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px}
+h2{font-size:clamp(28px,6vw,42px);text-transform:uppercase}
+.sec-head span{font-size:13px;color:var(--mute)}
+
+/* services grid */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.sv{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:10px;padding:18px}
+.sv h3{font-size:16px;text-transform:uppercase}
+.sv p{font-size:13px;color:var(--mute);margin:6px 0 10px}
+.sv .p{font-family:'Russo One';font-size:18px}
+.sv .p small{font-family:'Golos Text';font-size:12px;color:var(--mute)}
+
+/* why us */
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.wy{background:var(--asphalt);color:var(--concrete);border-radius:10px;padding:20px}
+.wy h3{font-size:15px;color:var(--orange);text-transform:uppercase;margin-bottom:8px}
+.wy p{font-size:14px;color:#b9bcb5}
+
+/* signature: наряд-заказ */
+.order{background:var(--panel);border:1px solid var(--line);border-radius:12px;max-width:520px;margin:0 auto;overflow:hidden;box-shadow:0 10px 30px rgba(28,30,32,.08)}
+.order-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:2px dashed var(--line)}
+.order-head .t{font-family:'Russo One';text-transform:uppercase;font-size:15px}
+.order-head .num{font-family:'Russo One';color:var(--orange);font-size:15px}
+.order-body{padding:22px}
+.order-body p{font-size:14px;color:var(--mute);margin-bottom:16px}
+.of{display:grid;gap:10px;text-align:left}
+.of label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.of input,.of select,.of textarea{width:100%;padding:13px 15px;border-radius:8px;border:1.5px solid var(--line);background:#fafaf8;font-family:'Golos Text';font-size:15px;color:var(--asphalt)}
+.of textarea{resize:vertical;min-height:76px}
+.of button{margin-top:6px;padding:16px;border:none;border-radius:8px;background:var(--orange);color:#fff;font-family:'Russo One';text-transform:uppercase;font-size:15px;cursor:pointer;letter-spacing:.04em}
+.stamp{display:none;margin-top:16px;text-align:center}
+.stamp span{display:inline-block;border:3px solid #3e7a4e;color:#3e7a4e;font-family:'Russo One';text-transform:uppercase;font-size:14px;padding:8px 18px;border-radius:6px;transform:rotate(-4deg)}
+.order .fine{font-size:12px;color:var(--mute);padding:0 22px 20px;text-align:center}
+
+.contacts{display:grid;gap:6px;font-size:15px}
+.contacts a{color:var(--orange);font-weight:600}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;font-size:13px;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+footer a{color:var(--orange);text-decoration:none;font-weight:600}
+.demo-note{background-image:linear-gradient(var(--asphalt),var(--asphalt));color:#b9bcb5;font-size:12px;text-align:center;padding:8px 14px;letter-spacing:.03em}
+.demo-note a{color:var(--orange);font-weight:700;text-decoration:none}
+/* несжимаемый фоновый слой — виден при любой теме */
+.bgfix{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(180deg,#ECEDEA 0%,#ECEDEA 100%)}
+body{background:transparent}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* защита от принудительной тёмной темы: градиенты не перекрашиваются */
+html,body{background-image:linear-gradient(var(--concrete),var(--concrete))}
+header{background-image:linear-gradient(rgba(236,237,234,.93),rgba(236,237,234,.93))}
+.sv,.order{background-image:linear-gradient(#fff,#fff)}
+.of input,.of select,.of textarea{background-image:linear-gradient(#fafaf8,#fafaf8)}
+.wy{background-image:linear-gradient(var(--asphalt),var(--asphalt))}
+body,.hero p,.sec-head span,.sv p,.order-body p,.of label,.trust div{color:var(--asphalt)}
+.hero p{color:#494c46}.sec-head span,.sv p,.order-body p,.of label,.trust div{color:#6d7069}
+</style>
+</head>
+<body>
+<div class="bgfix" aria-hidden="true"></div>
+
+<div class="hazard"></div>
+<div class="demo-note">Демо-работа для портфолио · сервис вымышленный · хочу такой сайт → <a href="https://t.me/avelexe" target="_blank" rel="noopener">@avelexe</a></div>
+<header>
+  <div class="wrap nav">
+    <div class="logo">ГАРАЖ <b>№9</b></div>
+    <a class="btn-s" href="#zayavka">Оставить заявку</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Автосервис · левый берег</div>
+    <h1>Чиним честно.<br>Цену говорим до работ</h1>
+    <p>Диагностика, ремонт подвески и двигателя, замена масла. Опишите проблему онлайн — мастер перезвонит с ценой и свободным временем.</p>
+    <div class="hero-cta">
+      <a class="btn btn-orange" href="#zayavka">Записать авто</a>
+      <a class="btn btn-line" href="#price">Цены на работы</a>
+    </div>
+    <div class="trust">
+      <div><b>12 лет</b>тот же адрес</div>
+      <div><b>4.8</b>рейтинг в 2ГИС</div>
+      <div><b>30 дней</b>гарантия на работы</div>
+    </div>
+  </div>
+
+  <section id="price">
+    <div class="sec-head"><h2>Работы</h2><span>цены — от, точную скажет мастер</span></div>
+    <div class="services">
+      <div class="sv"><h3>Диагностика</h3><p>Компьютерная + осмотр на подъёмнике</p><div class="p">800 ₽ <small>· бесплатно при ремонте у нас</small></div></div>
+      <div class="sv"><h3>Замена масла</h3><p>Масло ваше или наше, фильтр в подарок</p><div class="p">от 600 ₽</div></div>
+      <div class="sv"><h3>Подвеска</h3><p>Стойки, рычаги, сайлентблоки, ступицы</p><div class="p">от 1 500 ₽</div></div>
+      <div class="sv"><h3>Тормоза</h3><p>Колодки, диски, прокачка системы</p><div class="p">от 1 200 ₽</div></div>
+      <div class="sv"><h3>Двигатель</h3><p>ГРМ, прокладки, помпа, ремонт</p><div class="p">от 3 000 ₽</div></div>
+      <div class="sv"><h3>Электрика</h3><p>Стартеры, генераторы, проводка</p><div class="p">от 1 000 ₽</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Почему мы</h2><span>без сюрпризов</span></div>
+    <div class="why">
+      <div class="wy"><h3>Смотрите сами</h3><p>Пускаем в ремзону — покажем, что меняем и почему.</p></div>
+      <div class="wy"><h3>Согласуем до работ</h3><p>Ни одной операции без вашего «да». Смета — в мессенджер.</p></div>
+      <div class="wy"><h3>Старые детали вернём</h3><p>Всё снятое отдаём вам. Так честнее.</p></div>
+    </div>
+  </section>
+
+  <section id="zayavka">
+    <div class="order">
+      <div class="order-head"><div class="t">Заявка на ремонт</div><div class="num">№ 0917</div></div>
+      <div class="order-body">
+        <p>Заполните — заявка мгновенно упадёт мастеру в Telegram. Перезвоним в течение 15 минут в рабочее время.</p>
+        <form class="of" onsubmit="event.preventDefault();document.getElementById('st').style.display='block';this.reset()">
+          <div><label for="a1">Марка и модель</label><input id="a1" type="text" placeholder="Toyota Corolla, 2012" required></div>
+          <div><label for="a2">Что беспокоит</label><textarea id="a2" placeholder="Стук спереди справа на кочках…"></textarea></div>
+          <div><label for="a3">Телефон</label><input id="a3" type="tel" placeholder="+7 ___ ___-__-__" required></div>
+          <button type="submit">Отправить мастеру</button>
+        </form>
+        <div class="stamp" id="st"><span>Принято в работу</span></div>
+      </div>
+      <div class="fine">Демо-форма. В рабочей версии заявка приходит владельцу в Telegram-бот.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Контакты</h2><span>заезд с улицы</span></div>
+    <div class="contacts">
+      <div>Новосибирск, ул. Ватутина, 99к2</div>
+      <div>Пн–Сб 9:00–20:00 · Вс 10:00–18:00</div>
+      <a href="tel:+79130000000">+7 913 000-00-00</a>
+      <div>2ГИС · Яндекс.Карты — «Гараж №9»</div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div>ГАРАЖ №9 · демо-лендинг</div>
+  <div>Сайт за 3 дня — <a href="https://t.me/avelexe" target="_blank" rel="noopener">напишите мне</a></div>
+</footer>
+
+</body>
+</html>

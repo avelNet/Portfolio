@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only light">
+<title>ПУДРА — студия маникюра · онлайн-запись</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --milk:#F7F3EE; --ink:#2B2024; --cherry:#B04A5A; --sage:#A8B5A0; --line:#E3DAD1;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--milk);color-scheme:only light}
+body{font-family:'Golos Text',sans-serif;background:var(--milk);color:var(--ink);line-height:1.55}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+h1,h2,.serif{font-family:'Cormorant',serif;font-weight:600;letter-spacing:.01em}
+
+/* header */
+header{position:sticky;top:0;background:rgba(247,243,238,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:'Cormorant',serif;font-size:24px;font-weight:600;letter-spacing:.14em}
+.logo span{color:var(--cherry)}
+.nav a.btn-s{font-size:13px;font-weight:600;color:var(--milk);background:var(--ink);padding:9px 16px;border-radius:99px;text-decoration:none}
+
+/* hero */
+.hero{padding:56px 0 40px;text-align:left}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cherry);font-weight:600}
+.hero h1{font-size:clamp(40px,9vw,76px);line-height:1.02;margin:14px 0 18px}
+.hero h1 em{font-style:italic;color:var(--cherry)}
+.hero p{font-size:16px;max-width:440px;color:#5d5257}
+.hero-cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:99px;transition:transform .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-dark{background:var(--ink);color:var(--milk)}
+.btn-line{border:1.5px solid var(--ink);color:var(--ink)}
+
+/* signature: lacquer palette */
+.palette{margin-top:44px}
+.palette-label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8a7d80;margin-bottom:10px}
+.swatches{display:flex;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.sw{flex:1;height:74px;border:none;cursor:pointer;position:relative;transition:flex .25s ease}
+.sw:hover,.sw.on{flex:1.8}
+.sw.on::after{content:"этот";position:absolute;bottom:8px;left:0;right:0;text-align:center;font-family:'Golos Text';font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.9)}
+.palette-hint{font-size:13px;color:#8a7d80;margin-top:10px}
+
+/* services */
+section{padding:52px 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:26px}
+h2{font-size:clamp(30px,6vw,44px)}
+.sec-head span{font-size:13px;color:#8a7d80}
+.price-list{border-top:1px solid var(--line)}
+.row{display:flex;align-items:baseline;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.row .name{font-weight:500}
+.row .note{font-size:13px;color:#8a7d80;display:block}
+.row .dots{flex:1;border-bottom:1.5px dotted #cfc4bb;transform:translateY(-4px)}
+.row .price{font-family:'Cormorant',serif;font-size:22px;font-weight:600;white-space:nowrap}
+.row .price b{color:var(--cherry)}
+
+/* masters */
+.masters{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+.ava{width:64px;height:64px;border-radius:50%;margin-bottom:14px;background:radial-gradient(circle at 30% 30%, var(--sage), var(--cherry))}
+.card h3{font-family:'Cormorant',serif;font-size:24px;font-weight:600}
+.card p{font-size:14px;color:#5d5257;margin-top:6px}
+.tag{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--cherry);border:1px solid var(--cherry);border-radius:99px;padding:3px 10px;margin-top:12px}
+
+/* booking */
+.book{background:var(--ink);color:var(--milk);border-radius:24px;padding:40px 24px;text-align:center}
+.book h2{color:var(--milk)}
+.book p{color:#c9bfc2;max-width:420px;margin:12px auto 24px;font-size:15px}
+.book-form{display:grid;gap:10px;max-width:380px;margin:0 auto;text-align:left}
+.book-form label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#a99ea1}
+.book-form input,.book-form select{width:100%;padding:14px 16px;border-radius:12px;border:1px solid #4a3f43;background:#3a3033;color:var(--milk);font-family:'Golos Text';font-size:15px}
+.book-form button{margin-top:8px;padding:16px;border:none;border-radius:99px;background:var(--cherry);color:#fff;font-family:'Golos Text';font-weight:600;font-size:16px;cursor:pointer}
+.ok{display:none;margin-top:16px;font-size:15px;color:var(--sage)}
+.book .fine{font-size:12px;color:#8a7d80;margin-top:16px}
+
+/* footer */
+.contacts{display:grid;gap:6px;font-size:15px}
+.contacts a{color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;font-size:13px;color:#8a7d80;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+footer a{color:var(--cherry);text-decoration:none;font-weight:600}
+.demo-note{background:var(--ink);color:#c9bfc2;font-size:12px;text-align:center;padding:8px 14px;letter-spacing:.03em}
+.demo-note a{color:#E8B4BC;font-weight:600;text-decoration:none}
+/* несжимаемый фоновый слой — виден при любой теме */
+.bgfix{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(180deg,#F7F3EE 0%,#F7F3EE 100%)}
+body{background:transparent}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* защита от принудительной тёмной темы: градиенты не перекрашиваются */
+html,body{background-image:linear-gradient(var(--milk),var(--milk))}
+header{background-image:linear-gradient(rgba(247,243,238,.92),rgba(247,243,238,.92))}
+.card{background-image:linear-gradient(#fff,#fff)}
+.book{background-image:linear-gradient(var(--ink),var(--ink))}
+.book-form input,.book-form select{background-image:linear-gradient(#3a3033,#3a3033)}
+</style>
+</head>
+<body>
+<div class="bgfix" aria-hidden="true"></div>
+
+<div class="demo-note">Демо-работа для портфолио · салон вымышленный · хочу такой сайт → <a href="https://t.me/avelexe" target="_blank" rel="noopener">@avelexe</a></div>
+<header>
+  <div class="wrap nav">
+    <div class="logo">ПУДРА<span>.</span></div>
+    <a class="btn-s" href="#zapis">Записаться</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Студия маникюра · Новосибирск</div>
+    <h1>Руки, на которые <em>смотрят</em></h1>
+    <p>Маникюр, педикюр и дизайн без спешки. Стерильный инструмент, топовые базы, запись онлайн за минуту — без звонков и переписок.</p>
+    <div class="hero-cta">
+      <a class="btn btn-dark" href="#zapis">Записаться онлайн</a>
+      <a class="btn btn-line" href="#price">Смотреть цены</a>
+    </div>
+
+    <div class="palette">
+      <div class="palette-label">Оттенок месяца — выбери свой</div>
+      <div class="swatches" id="sw">
+        <button class="sw" style="background:#B04A5A" data-c="#B04A5A" aria-label="вишня"></button>
+        <button class="sw" style="background:#C98A7D" data-c="#C98A7D" aria-label="терракота"></button>
+        <button class="sw" style="background:#A8B5A0" data-c="#A8B5A0" aria-label="шалфей"></button>
+        <button class="sw" style="background:#8E7DA6" data-c="#8E7DA6" aria-label="лаванда"></button>
+        <button class="sw" style="background:#3E3A45" data-c="#3E3A45" aria-label="графит"></button>
+      </div>
+      <div class="palette-hint">Нажми на цвет — страница подстроится под твой будущий маникюр.</div>
+    </div>
+  </div>
+
+  <section id="price">
+    <div class="sec-head">
+      <h2>Цены</h2><span>без скрытых доплат</span>
+    </div>
+    <div class="price-list">
+      <div class="row"><div><span class="name">Маникюр + гель-лак</span><span class="note">снятие, форма, покрытие — всё включено</span></div><div class="dots"></div><div class="price"><b>1 700</b> ₽</div></div>
+      <div class="row"><div><span class="name">Маникюр без покрытия</span></div><div class="dots"></div><div class="price">900 ₽</div></div>
+      <div class="row"><div><span class="name">Педикюр + гель-лак</span></div><div class="dots"></div><div class="price">2 300 ₽</div></div>
+      <div class="row"><div><span class="name">Укрепление гелем</span></div><div class="dots"></div><div class="price">+500 ₽</div></div>
+      <div class="row"><div><span class="name">Дизайн</span><span class="note">френч, растяжка, стемпинг</span></div><div class="dots"></div><div class="price">от 100 ₽</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Мастера</h2><span>работаем с 2024</span></div>
+    <div class="masters">
+      <div class="card"><div class="ava"></div><h3>Алина</h3><p>Топ-мастер. Сложные формы, идеальные блики, аппаратный маникюр.</p><div class="tag">стаж 6 лет</div></div>
+      <div class="card"><div class="ava" style="background:radial-gradient(circle at 30% 30%,#C98A7D,#8E7DA6)"></div><h3>Вика</h3><p>Дизайн любой сложности — от минимализма до росписи.</p><div class="tag">стаж 4 года</div></div>
+      <div class="card"><div class="ava" style="background:radial-gradient(circle at 30% 30%,#8E7DA6,#3E3A45)"></div><h3>Соня</h3><p>Педикюр и работа с проблемными ногтями. Бережно и без боли.</p><div class="tag">стаж 5 лет</div></div>
+    </div>
+  </section>
+
+  <section id="zapis">
+    <div class="book">
+      <h2>Онлайн-запись</h2>
+      <p>Выбери услугу и удобное время — подтверждение придёт в Telegram или по СМС в течение пары минут.</p>
+      <form class="book-form" onsubmit="event.preventDefault();document.getElementById('ok').style.display='block';this.reset()">
+        <div><label for="f1">Услуга</label>
+        <select id="f1"><option>Маникюр + гель-лак</option><option>Маникюр без покрытия</option><option>Педикюр + гель-лак</option><option>Дизайн / другое</option></select></div>
+        <div><label for="f2">Имя</label><input id="f2" type="text" placeholder="Как к вам обращаться" required></div>
+        <div><label for="f3">Телефон</label><input id="f3" type="tel" placeholder="+7 ___ ___-__-__" required></div>
+        <button type="submit">Выбрать время →</button>
+      </form>
+      <div class="ok" id="ok">Заявка улетела! Администратор напишет вам в течение 10 минут.</div>
+      <div class="fine">Демо-виджет. В рабочей версии здесь ваша запись из YClients / DIKIDI или Telegram-бот.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Где мы</h2><span>центр, 5 минут от метро</span></div>
+    <div class="contacts">
+      <div>Новосибирск, ул. Ленина, 12 · 2 этаж</div>
+      <div>Ежедневно 10:00–21:00</div>
+      <a href="tel:+79130000000">+7 913 000-00-00</a>
+      <div>Instagram · VK · 2ГИС — @pudra.nsk</div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div>ПУДРА · демо-лендинг</div>
+  <div>Сайт за 3 дня — <a href="https://t.me/avelexe" target="_blank" rel="noopener">напишите мне</a></div>
+</footer>
+
+<script>
+const root=document.documentElement;
+document.querySelectorAll('.sw').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.sw').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    root.style.setProperty('--cherry',b.dataset.c);
+  });
+});
+</script>
+</body>
+</html>
