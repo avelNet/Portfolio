@@ -63,6 +63,20 @@ h2{font-size:clamp(22px,5vw,32px);margin-bottom:8px}
 .step h3{font-size:15px}
 .step p{font-size:14px;color:var(--mute);margin-top:4px}
 
+/* pricing */
+.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.pr{background-image:linear-gradient(var(--panel),var(--panel));border:1px solid var(--line);border-radius:16px;padding:24px;position:relative}
+.pr.hot{border-color:var(--amber)}
+.pr .flag{position:absolute;top:-11px;left:20px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background-image:linear-gradient(var(--amber),var(--amber));color:#1a1405;font-weight:700;padding:4px 10px;border-radius:99px}
+.pr h3{font-size:16px;margin-bottom:6px}
+.pr .cost{font-family:'Unbounded';font-size:26px;font-weight:700;color:var(--amber);margin-bottom:14px}
+.pr .cost small{font-family:'Golos Text';font-size:13px;color:var(--mute);font-weight:400}
+.pr ul{list-style:none;display:grid;gap:8px}
+.pr li{font-size:14px;color:var(--mute);padding-left:20px;position:relative}
+.pr li::before{content:"—";position:absolute;left:0;color:var(--amber)}
+.pr-note{margin-top:16px;font-size:14px;color:var(--mute);text-align:center}
+.pr-note b{color:var(--paper);font-weight:500}
+
 /* final CTA */
 .final{background-image:linear-gradient(var(--panel),var(--panel));border:1px solid var(--line);border-radius:20px;padding:40px 24px;text-align:center}
 .final h2{margin-bottom:12px}
@@ -133,6 +147,38 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--mute);text-align:center}
     </div>
   </section>
 
+  <section id="prices">
+    <h2>Цены</h2>
+    <div class="sub">Честные вилки без «менеджер посчитает». Старт работы — предоплата 50%.</div>
+    <div class="prices">
+
+      <div class="pr">
+        <h3>Лендинг</h3>
+        <div class="cost">от 12 000 ₽</div>
+        <ul>
+          <li>одностраничный сайт под вашу нишу</li>
+          <li>приём заявок с уведомлением в Telegram</li>
+          <li>идеально выглядит с телефона</li>
+          <li>запуск, домен, 2 раунда правок</li>
+          <li>черновик за 1–2 дня после обсуждения</li>
+        </ul>
+      </div>
+
+      <div class="pr hot">
+        <div class="flag">Популярный выбор</div>
+        <h3>Лендинг + запись и фишки</h3>
+        <div class="cost">от 15 000 ₽</div>
+        <ul>
+          <li>всё из базового тарифа</li>
+          <li>подключение онлайн-записи: YClients / DIKIDI настрою под ключ, или Telegram-бот</li>
+          <li>калькулятор цены или квиз — под задачу бизнеса</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="pr-note"><b>Большинство проектов — в пределах 12–20 тысяч.</b> Точный расчёт под вашу задачу — бесплатно в Telegram.</div>
+  </section>
+
   <section>
     <h2>Как проходит работа</h2>
     <div class="sub">Без созвонов на час и технических терминов.</div>
@@ -146,7 +192,7 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--mute);text-align:center}
   <section>
     <div class="final">
       <h2>Обсудим ваш сайт?</h2>
-      <p>Напишите пару слов о вашем бизнесе — любая ниша, любой формат. В ответ пришлю подходящие примеры и назову цену. Бесплатно и ни к чему не обязывает.</p>
+      <p>Напишите пару слов о вашем бизнесе — любая ниша, любой формат. В ответ пришлю подходящие примеры и точный расчёт. Бесплатно и ни к чему не обязывает.</p>
       <a class="btn btn-amber" href="https://t.me/avelexe" target="_blank" rel="noopener">Написать в Telegram</a>
       <div class="tg">или напрямую: <b style="color:var(--amber);font-weight:600">@avelexe</b></div>
     </div>
