@@ -78,6 +78,8 @@ h2{font-size:clamp(30px,6vw,44px)}
 .chip,.slot{font-family:'Golos Text';font-size:14px;font-weight:500;padding:10px 14px;border-radius:10px;border:1px solid #4a3f43;background-image:linear-gradient(#3a3033,#3a3033);color:var(--milk);cursor:pointer}
 .chip.on{background-image:linear-gradient(var(--milk),var(--milk));color:var(--ink);border-color:var(--milk)}
 .slot.on{background-image:linear-gradient(var(--cherry),var(--cherry));border-color:var(--cherry);color:#fff;font-weight:700}
+.slot.off{opacity:.35;cursor:default;text-decoration:line-through}
+.closed{display:none;font-size:13px;color:#a99ea1;margin-top:6px;font-weight:600}
 .hint{font-size:12px;color:#a99ea1;margin-top:6px}
 .ok{display:none;margin-top:16px;font-size:15px;color:var(--sage)}
 .book .fine{font-size:12px;color:#8a7d80;margin-top:16px}
@@ -170,12 +172,13 @@ header{background-image:linear-gradient(rgba(247,243,238,.92),rgba(247,243,238,.
         <div class="chips"><button type="button" class="chip on">Сегодня</button><button type="button" class="chip">Завтра</button><button type="button" class="chip">Послезавтра</button></div></div>
         <div><label>Время</label>
         <div class="slots"><button type="button" class="slot">10:00</button><button type="button" class="slot">12:00</button><button type="button" class="slot">14:00</button><button type="button" class="slot">16:00</button><button type="button" class="slot">18:00</button><button type="button" class="slot">19:30</button></div>
-        <div class="hint" id="phint">Выберите время, чтобы записаться</div></div>
-        <div><label for="f3">Телефон</label><input id="f3" type="tel" placeholder="+7 ___ ___-__-__" required></div>
+        <div class="hint" id="phint">Выберите время, чтобы записаться</div>
+        <div class="closed" id="pclosed">На сегодня запись закрыта — выберите другой день</div></div>
+        <div><label for="f3">Телефон</label><input id="f3" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 ___ ___-__-__" required></div>
         <button type="submit" id="pbtn">Записаться</button>
       </form>
       <div class="ok" id="ok"></div>
-      <div class="fine">Демо-виджет. В рабочей версии здесь ваша запись из YClients / DIKIDI или Telegram-бот.</div>
+      <div class="fine">🔌 Демо-виджет. На вашем сайте сюда подключается настоящая система записи (YClients / DIKIDI) или Telegram-бот — слоты и график берутся из неё автоматически.</div>
     </div>
   </section>
 
@@ -190,6 +193,7 @@ header{background-image:linear-gradient(rgba(247,243,238,.92),rgba(247,243,238,.
   </section>
 
 </main>
+
 <footer class="wrap">
   <div>ПУДРА · демо-лендинг</div>
   <div>Сайт за 3 дня — <a href="https://t.me/avelexe" target="_blank" rel="noopener">напишите мне</a></div>
@@ -205,16 +209,44 @@ document.querySelectorAll('.sw').forEach(b=>{
   });
 });
 (function(){
-  var day='Сегодня', time=null;
-  var chips=document.querySelectorAll('.chip'), slots=document.querySelectorAll('.slot');
-  var btn=document.getElementById('pbtn'), hint=document.getElementById('phint'), ok=document.getElementById('ok');
-  chips.forEach(function(c){c.addEventListener('click',function(){chips.forEach(function(x){x.classList.remove('on')});c.classList.add('on');day=c.textContent;});});
-  slots.forEach(function(s){s.addEventListener('click',function(){slots.forEach(function(x){x.classList.remove('on')});s.classList.add('on');time=s.textContent;btn.textContent='Записаться на '+time;hint.style.display='none';});});
+  var chips=Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var slots=Array.prototype.slice.call(document.querySelectorAll('.slot'));
+  var btn=document.getElementById('pbtn'), hint=document.getElementById('phint'),
+      ok=document.getElementById('ok'), closed=document.getElementById('pclosed');
+  var day=0, time=null;
+  function isBusy(d,i){return (i*7+d*3)%5===0;}
+  function refresh(){
+    ok.style.display='none';
+    var now=new Date(), cur=now.getHours()+now.getMinutes()/60, free=0;
+    slots.forEach(function(s,i){
+      var p=s.textContent.split(':'), t=parseInt(p[0],10)+parseInt(p[1],10)/60;
+      var off=(day===0 && t<=cur+0.4)||isBusy(day,i);
+      s.disabled=off; s.classList.toggle('off',off);
+      if(off&&s.classList.contains('on')){s.classList.remove('on');time=null;btn.textContent='Записаться';hint.style.display='block';}
+      if(!off)free++;
+    });
+    closed.style.display=free?'none':'block';
+    if(free)hint.style.display=time?'none':'block'; else hint.style.display='none';
+  }
+  chips.forEach(function(c,idx){c.addEventListener('click',function(){
+    chips.forEach(function(x){x.classList.remove('on')}); c.classList.add('on'); day=idx; refresh();
+  });});
+  slots.forEach(function(s){s.addEventListener('click',function(){
+    if(s.disabled)return;
+    ok.style.display='none';
+    slots.forEach(function(x){x.classList.remove('on')}); s.classList.add('on');
+    time=s.textContent; btn.textContent='Записаться на '+time; hint.style.display='none';
+  });});
+  refresh();
+  if(closed.style.display==='block'){chips[1].click();}
   document.getElementById('pform').addEventListener('submit',function(e){
     e.preventDefault();
     if(!time){hint.style.display='block';hint.textContent='Сначала выберите время ↑';return;}
-    ok.textContent='Вы записаны: '+day.toLowerCase()+', '+time+'. Ждём вас! Напоминание придёт заранее.';
+    var nm=document.getElementById('f2').value.trim();
+    var svc=document.getElementById('f1').value;
+    ok.textContent=(nm?nm+', вы':'Вы')+' записаны: '+chips[day].textContent.toLowerCase()+', '+time+' · '+svc.toLowerCase()+'. Напоминание придёт заранее.';
     ok.style.display='block';
+    ok.scrollIntoView({behavior:'smooth',block:'nearest'});
   });
 })();
 </script>

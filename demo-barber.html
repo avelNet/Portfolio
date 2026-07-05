@@ -82,6 +82,8 @@ h2{font-size:clamp(30px,7vw,48px);font-weight:700}
 .chip,.slot{font-family:'Golos Text';font-size:14px;font-weight:500;padding:10px 14px;border-radius:6px;border:1.5px solid #cfc8b8;background:#fff;color:var(--coal);cursor:pointer}
 .chip.on{background:var(--coal);color:var(--bone);border-color:var(--coal)}
 .slot.on{background:var(--brass);border-color:var(--brass);color:var(--coal);font-weight:700}
+.slot.off{opacity:.35;cursor:default;text-decoration:line-through}
+.closed{display:none;font-size:13px;color:#8a8271;margin-top:6px;font-weight:600}
 .hint{font-size:12px;color:#8a8271;margin-top:6px}
 .ok{display:none;margin-top:16px;font-size:15px;color:#3e7a4e;font-weight:600}
 .book .fine{font-size:12px;color:#8a8271;margin-top:16px}
@@ -156,12 +158,13 @@ footer a{color:var(--brass);text-decoration:none;font-weight:600}
         <div class="chips"><button type="button" class="chip on">Сегодня</button><button type="button" class="chip">Завтра</button><button type="button" class="chip">Послезавтра</button></div></div>
         <div><label>Время</label>
         <div class="slots"><button type="button" class="slot">10:00</button><button type="button" class="slot">11:30</button><button type="button" class="slot">13:00</button><button type="button" class="slot">14:30</button><button type="button" class="slot">16:00</button><button type="button" class="slot">17:30</button><button type="button" class="slot">19:00</button><button type="button" class="slot">20:30</button></div>
-        <div class="hint" id="bhint">Выберите время, чтобы записаться</div></div>
-        <div><label for="b3">Телефон</label><input id="b3" type="tel" placeholder="+7 ___ ___-__-__" required></div>
+        <div class="hint" id="bhint">Выберите время, чтобы записаться</div>
+        <div class="closed" id="bclosed">На сегодня запись закрыта — выберите другой день</div></div>
+        <div><label for="b3">Телефон</label><input id="b3" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 ___ ___-__-__" required></div>
         <button type="submit" id="bbtn">Записаться</button>
       </form>
       <div class="ok" id="ok"></div>
-      <div class="fine">Демо-виджет. В рабочей версии — ваша запись из YClients или Telegram-бот.</div>
+      <div class="fine">🔌 Демо-виджет. На вашем сайте сюда подключается настоящая система записи (YClients / DIKIDI) или Telegram-бот — слоты и графики мастеров берутся из неё автоматически.</div>
     </div>
   </section>
 
@@ -184,16 +187,70 @@ footer a{color:var(--brass);text-decoration:none;font-weight:600}
 
 <script>
 (function(){
-  var day='Сегодня', time=null;
-  var chips=document.querySelectorAll('.chip'), slots=document.querySelectorAll('.slot');
-  var btn=document.getElementById('bbtn'), hint=document.getElementById('bhint'), ok=document.getElementById('ok');
-  chips.forEach(function(c){c.addEventListener('click',function(){chips.forEach(function(x){x.classList.remove('on')});c.classList.add('on');day=c.textContent;});});
-  slots.forEach(function(s){s.addEventListener('click',function(){slots.forEach(function(x){x.classList.remove('on')});s.classList.add('on');time=s.textContent;btn.textContent='Записаться на '+time;hint.style.display='none';});});
+  var chips=Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var slots=Array.prototype.slice.call(document.querySelectorAll('.slot'));
+  var btn=document.getElementById('bbtn'), hint=document.getElementById('bhint'),
+      ok=document.getElementById('ok'), closed=document.getElementById('bclosed'),
+      sel=document.getElementById('b2');
+  var day=0, time=null;
+  // График: у каждого барбера свои рабочие часы и своя занятость (индексы слотов по дням)
+  var SCHED={
+    'Марк':  {hours:[10,17],  busy:[[1],[0,3],[2]]},        // утренняя смена
+    'Даня':  {hours:[11.5,20.5], busy:[[4],[2],'off']},     // послезавтра выходной
+    'Артём': {hours:[14.5,20.5], busy:[[6],[5,7],[4]]}      // вечерняя смена
+  };
+  function slotState(name,d,i,t){
+    var s=SCHED[name];
+    if(s.busy[d]==='off') return 'off';
+    if(t<s.hours[0]||t>s.hours[1]) return 'off';
+    if(s.busy[d].indexOf(i)>-1) return 'busy';
+    return 'free';
+  }
+  function refresh(){
+    ok.style.display='none';
+    var now=new Date(), cur=now.getHours()+now.getMinutes()/60, free=0;
+    var who=sel.value;
+    slots.forEach(function(s,i){
+      var p=s.textContent.split(':'), t=parseInt(p[0],10)+parseInt(p[1],10)/60;
+      var off;
+      if(day===0 && t<=cur+0.4){ off=true; }
+      else if(who==='Любой свободный'){
+        // свободен, если свободен хоть один барбер
+        off=!Object.keys(SCHED).some(function(n){return slotState(n,day,i,t)==='free';});
+      } else {
+        off=slotState(who,day,i,t)!=='free';
+      }
+      s.disabled=off; s.classList.toggle('off',off);
+      if(off&&s.classList.contains('on')){s.classList.remove('on');time=null;btn.textContent='Записаться';}
+      if(!off)free++;
+    });
+    var dayOff=(who!=='Любой свободный'&&SCHED[who].busy[day]==='off');
+    closed.textContent=dayOff?(who+' в этот день не работает — выберите другой день или барбера'):'На сегодня запись закрыта — выберите другой день';
+    closed.style.display=free?'none':'block';
+    hint.style.display=(free&&!time)?'block':'none';
+    if(free&&!time)hint.textContent='Выберите время, чтобы записаться';
+  }
+  chips.forEach(function(c,idx){c.addEventListener('click',function(){
+    chips.forEach(function(x){x.classList.remove('on')}); c.classList.add('on'); day=idx; refresh();
+  });});
+  sel.addEventListener('change',refresh);
+  slots.forEach(function(s){s.addEventListener('click',function(){
+    if(s.disabled)return;
+    ok.style.display='none';
+    slots.forEach(function(x){x.classList.remove('on')}); s.classList.add('on');
+    time=s.textContent; btn.textContent='Записаться на '+time; hint.style.display='none';
+  });});
+  refresh();
+  if(closed.style.display==='block'){chips[1].click();}
   document.getElementById('bform').addEventListener('submit',function(e){
     e.preventDefault();
     if(!time){hint.style.display='block';hint.textContent='Сначала выберите время ↑';return;}
-    ok.textContent='Вы записаны: '+day.toLowerCase()+', '+time+'. Напоминание придёт за 2 часа до визита.';
+    var barber=sel.value;
+    ok.textContent='Вы записаны: '+chips[day].textContent.toLowerCase()+', '+time+
+      (barber!=='Любой свободный'?' · барбер '+barber:'')+
+      '. Напоминание придёт за 2 часа до визита.';
     ok.style.display='block';
+    ok.scrollIntoView({behavior:'smooth',block:'nearest'});
   });
 })();
 </script>
