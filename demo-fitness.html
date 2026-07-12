@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only light">
+<title>ПУЛЬС — персональный тренер · Москва</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#0C0C0E; --panel:#141418; --fire:#FF5200; --light:#F0F0F0; --mute:#7A7A85; --line:#222228;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--dark)}
+body{font-family:'Golos Text',sans-serif;background:var(--dark);color:var(--light);line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Montserrat',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-.02em}
+
+.demo-note{background:var(--fire);color:#fff;font-size:12px;text-align:center;padding:8px 14px;font-weight:500}
+.demo-note a{color:#fff;font-weight:700;text-decoration:underline}
+
+header{position:sticky;top:0;background:rgba(12,12,14,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:22px;letter-spacing:.04em;text-transform:uppercase}
+.logo b{color:var(--fire)}
+.nav .btn-h{font-size:12px;font-weight:700;font-family:'Montserrat';text-transform:uppercase;letter-spacing:.07em;color:#fff;background:var(--fire);padding:10px 18px;border-radius:4px;text-decoration:none;transition:opacity .15s}
+.nav .btn-h:hover{opacity:.85}
+
+.hero{padding:56px 0 48px;position:relative;overflow:hidden}
+.eyebrow{font-size:11px;letter-spacing:.35em;text-transform:uppercase;color:var(--fire);font-weight:700;margin-bottom:12px;font-family:'Montserrat'}
+.hero h1{font-size:clamp(56px,13vw,110px);line-height:.9;letter-spacing:-.03em}
+.hero h1 em{display:block;color:var(--fire);font-style:normal}
+.hero-sub{font-size:16px;color:var(--mute);max-width:440px;margin:20px 0 28px;font-family:'Golos Text';font-weight:400;text-transform:none;letter-spacing:0}
+.hero-sub b{color:var(--light)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-family:'Montserrat';font-size:13px;letter-spacing:.07em;text-transform:uppercase;padding:14px 26px;border-radius:4px;transition:opacity .15s}
+.btn:hover{opacity:.85}
+.btn:active{transform:scale(.97)}
+.btn-fire{background:var(--fire);color:#fff}
+.btn-ghost{border:1.5px solid var(--line);color:var(--light)}
+
+.strip{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:44px}
+.strip div{flex:1;padding:18px 10px;text-align:center;border-right:1px solid var(--line)}
+.strip div:last-child{border-right:none}
+.strip .n{font-family:'Montserrat',sans-serif;font-size:26px;font-weight:900;color:var(--fire)}
+.strip .l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-top:4px}
+
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+.sec-head{margin-bottom:26px}
+h2{font-size:clamp(30px,7vw,52px)}
+.sec-sub{font-size:15px;color:var(--mute);margin-top:6px;font-family:'Golos Text';text-transform:none;font-weight:400;letter-spacing:0}
+
+.programs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.prog{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;position:relative;overflow:hidden;transition:border-color .2s}
+.prog:hover{border-color:#333340}
+.prog.hot{border-color:var(--fire)}
+.prog .badge{position:absolute;top:-1px;right:16px;font-size:10px;font-family:'Montserrat';font-weight:700;text-transform:uppercase;letter-spacing:.1em;background:var(--fire);color:#fff;padding:4px 10px;border-radius:0 0 6px 6px}
+.prog h3{font-size:18px;letter-spacing:-.01em;margin-bottom:4px}
+.prog .price{font-family:'Montserrat';font-size:28px;font-weight:900;color:var(--fire);margin:14px 0}
+.prog .price small{font-family:'Golos Text';font-size:13px;color:var(--mute);font-weight:400;text-transform:none;letter-spacing:0}
+.prog ul{list-style:none;display:grid;gap:8px}
+.prog li{font-size:14px;color:var(--mute);padding-left:18px;position:relative;font-family:'Golos Text';text-transform:none;font-weight:400;letter-spacing:0}
+.prog li::before{content:"→";position:absolute;left:0;color:var(--fire);font-size:12px;top:1px}
+
+.trainer-wrap{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start}
+.trainer-avatar{width:112px;height:112px;border-radius:12px;background:var(--panel);border:3px solid var(--fire);display:flex;align-items:center;justify-content:center;font-size:44px;flex-shrink:0}
+.trainer-info h3{font-size:26px;margin-bottom:2px}
+.trainer-role{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--fire);font-weight:700;font-family:'Montserrat';margin-bottom:12px}
+.trainer-info p{font-size:15px;color:var(--mute);line-height:1.7;font-family:'Golos Text';text-transform:none;font-weight:400;letter-spacing:0}
+.trainer-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag{font-size:12px;border:1px solid var(--line);border-radius:4px;padding:5px 10px;color:var(--mute);font-family:'Golos Text';font-weight:400}
+
+.cta-block{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:40px 28px}
+.cta-block h2{margin-bottom:8px}
+.cta-block > p{color:var(--mute);margin-bottom:26px;font-size:15px;font-family:'Golos Text';text-transform:none;font-weight:400;letter-spacing:0}
+.pform{display:grid;gap:14px;max-width:440px}
+.pform label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:600;font-family:'Golos Text';display:block;margin-bottom:5px}
+.pform input{width:100%;padding:13px 16px;border-radius:6px;border:1.5px solid var(--line);background:#1C1C22;color:var(--light);font-family:'Golos Text';font-size:15px;transition:border-color .15s}
+.pform input::placeholder{color:#4A4A55}
+.pform input:focus{outline:none;border-color:var(--fire)}
+.goals{display:flex;flex-wrap:wrap;gap:8px}
+.goal{font-family:'Golos Text';font-size:14px;font-weight:500;padding:9px 14px;border-radius:6px;border:1.5px solid var(--line);background:transparent;color:var(--mute);cursor:pointer;transition:all .15s}
+.goal:hover{border-color:#444450;color:var(--light)}
+.goal.on{border-color:var(--fire);color:var(--fire);background:rgba(255,82,0,.08)}
+.pform button[type=submit]{padding:16px;border:none;border-radius:6px;background:var(--fire);color:#fff;font-family:'Montserrat';font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.07em;cursor:pointer;transition:opacity .15s}
+.pform button[type=submit]:hover{opacity:.88}
+.form-ok{display:none;margin-top:16px;font-size:15px;color:#5BC77E;font-weight:600;line-height:1.6;font-family:'Golos Text'}
+.form-fine{margin-top:14px;font-size:12px;color:var(--mute);line-height:1.6;font-family:'Golos Text'}
+
+.contacts-grid{display:grid;gap:8px;font-size:15px}
+.contacts-grid a{color:var(--fire);text-decoration:none}
+.contacts-grid a:hover{text-decoration:underline}
+
+footer{border-top:1px solid var(--line);padding:22px 0 38px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--mute);font-family:'Golos Text'}
+footer a{color:var(--fire);text-decoration:none;font-weight:600}
+
+@media(max-width:560px){
+  .strip{flex-direction:column}
+  .strip div{border-right:none;border-bottom:1px solid var(--line)}
+  .strip div:last-child{border-bottom:none}
+  .trainer-wrap{grid-template-columns:1fr}
+  .trainer-avatar{width:80px;height:80px;font-size:34px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="demo-note">Демо-работа для портфолио · персонаж вымышленный · хочу такой сайт → <a href="https://t.me/avelexe" target="_blank" rel="noopener">@avelexe</a></div>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">ПУ<b>ЛЬС</b></div>
+    <a class="btn-h" href="#signup">Пробное бесплатно</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Персональный тренер · Москва</div>
+    <h1>Сильнее<br><em>каждый день</em></h1>
+    <div class="hero-sub">Персональные тренировки с тренером-практиком. <b>Без воды и универсальных программ</b> — только то, что работает именно для вас.</div>
+    <div class="hero-cta">
+      <a class="btn btn-fire" href="#signup">Пробная тренировка</a>
+      <a class="btn btn-ghost" href="#programs">Программы</a>
+    </div>
+    <div class="strip">
+      <div><div class="n">8</div><div class="l">лет практики</div></div>
+      <div><div class="n">120+</div><div class="l">клиентов</div></div>
+      <div><div class="n">КМС</div><div class="l">пауэрлифтинг</div></div>
+      <div><div class="n">0 ₽</div><div class="l">первая тренировка</div></div>
+    </div>
+  </div>
+
+  <section id="programs">
+    <div class="sec-head">
+      <h2>Программы</h2>
+      <div class="sec-sub">Выбери формат — остальное подберём вместе на пробной</div>
+    </div>
+    <div class="programs">
+      <div class="prog">
+        <h3>Персональная</h3>
+        <div class="price">2 500 ₽ <small>/ занятие</small></div>
+        <ul>
+          <li>Программа под ваши цели</li>
+          <li>Техника под постоянным контролем</li>
+          <li>Дневник питания в подарок</li>
+          <li>Гибкое расписание</li>
+        </ul>
+      </div>
+      <div class="prog hot">
+        <div class="badge">Популярно</div>
+        <h3>Сплит 2×</h3>
+        <div class="price">1 600 ₽ <small>/ чел.</small></div>
+        <ul>
+          <li>Тренировка на двоих</li>
+          <li>Один уровень подготовки</li>
+          <li>Дешевле без потери качества</li>
+          <li>Мотивация партнёра рядом</li>
+        </ul>
+      </div>
+      <div class="prog">
+        <h3>Онлайн</h3>
+        <div class="price">8 000 ₽ <small>/ месяц</small></div>
+        <ul>
+          <li>Программа в приложении</li>
+          <li>Разбор техники по видео</li>
+          <li>Поддержка в чате каждый день</li>
+          <li>Любой зал или дома</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Тренер</h2></div>
+    <div class="trainer-wrap">
+      <div class="trainer-avatar">💪</div>
+      <div class="trainer-info">
+        <h3>Иван Горин</h3>
+        <div class="trainer-role">Персональный тренер</div>
+        <p>КМС по пауэрлифтингу, 8 лет в тренерстве. Работаю с новичками без опыта и с опытными спортсменами — готовлю к соревнованиям и помогаю выйти из плато. Не даю шаблонные программы: каждый клиент начинается с разговора о целях и ограничениях.</p>
+        <div class="trainer-tags">
+          <span class="tag">Силовые тренировки</span>
+          <span class="tag">Снижение веса</span>
+          <span class="tag">Набор массы</span>
+          <span class="tag">Реабилитация</span>
+          <span class="tag">Питание</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="signup">
+    <div class="cta-block">
+      <h2>Пробная тренировка</h2>
+      <p>Первая тренировка — бесплатно. Оставьте заявку, и я свяжусь в течение часа, чтобы подобрать удобное время и место.</p>
+      <form class="pform" id="pform">
+        <div>
+          <label for="p1">Имя</label>
+          <input id="p1" type="text" placeholder="Ваше имя" required>
+        </div>
+        <div>
+          <label for="p2">Телефон</label>
+          <input id="p2" type="tel" placeholder="+7 ___ ___-__-__" required>
+        </div>
+        <div>
+          <label style="margin-bottom:8px">Ваша цель</label>
+          <div class="goals">
+            <button type="button" class="goal">Похудеть</button>
+            <button type="button" class="goal">Набрать массу</button>
+            <button type="button" class="goal">Стать сильнее</button>
+            <button type="button" class="goal">Исправить осанку</button>
+            <button type="button" class="goal">Общая форма</button>
+          </div>
+        </div>
+        <button type="submit">Записаться на пробную</button>
+      </form>
+      <div class="form-ok" id="pok"></div>
+      <div class="form-fine">🔌 Демо-форма. На вашем сайте заявка летит в Telegram — с именем, телефоном и целью клиента.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Контакты</h2></div>
+    <div class="contacts-grid">
+      <div>Москва — зал на Курской + выезд в ваш зал</div>
+      <div>Пн–Сб 7:00–21:00, Вс по договорённости</div>
+      <a href="tel:+79130000000">+7 913 000-00-00</a>
+      <div>Telegram · Instagram — @puls.fit</div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div>ПУЛЬС · демо-лендинг</div>
+  <div>Сайт за 3 дня — <a href="https://t.me/avelexe" target="_blank" rel="noopener">напишите мне</a></div>
+</footer>
+
+<script>
+(function(){
+  document.querySelectorAll('.goal').forEach(function(g){
+    g.addEventListener('click', function(){
+      document.querySelectorAll('.goal').forEach(function(x){ x.classList.remove('on'); });
+      g.classList.add('on');
+    });
+  });
+
+  document.getElementById('pform').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('p1').value;
+    var goal = document.querySelector('.goal.on');
+    var ok   = document.getElementById('pok');
+    ok.textContent = 'Отлично, ' + name + '! Заявка принята — свяжусь в течение часа, договоримся о времени пробной тренировки' +
+      (goal ? ' · Цель: ' + goal.textContent : '') + '.';
+    ok.style.display = 'block';
+    this.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only light">
+<title>МЯТА — кофейня · Новосибирск</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --espresso:#1A1209; --wood:#241B0E; --cream:#F0E8D8; --mute:#9B8E7B; --mint:#5B8A72; --caramel:#D4923A; --line:#3A2E1E;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--espresso)}
+body{font-family:'Golos Text',sans-serif;background:var(--espresso);color:var(--cream);line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'PT Serif',serif}
+
+.demo-note{background:var(--mint);color:#fff;font-size:12px;text-align:center;padding:8px 14px;font-weight:500}
+.demo-note a{color:#fff;font-weight:700;text-decoration:underline}
+
+header{position:sticky;top:0;background:rgba(26,18,9,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-family:'PT Serif',serif;font-weight:700;font-size:22px;letter-spacing:.06em}
+.logo b{color:var(--mint)}
+.nav .btn-h{font-size:13px;font-weight:600;color:var(--espresso);background:var(--caramel);padding:9px 18px;border-radius:6px;text-decoration:none}
+.nav .btn-h:hover{opacity:.88}
+
+.hero{padding:64px 0 52px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--mint);font-weight:600;margin-bottom:16px;font-family:'Golos Text'}
+.hero h1{font-size:clamp(44px,11vw,88px);line-height:1.02;font-weight:700;font-style:italic}
+.hero h1 em{color:var(--caramel)}
+.hero-sub{font-size:16px;color:var(--mute);max-width:420px;margin:16px 0 28px}
+.hero-sub b{color:var(--cream)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:15px;padding:14px 28px;border-radius:8px;transition:opacity .15s}
+.btn:hover{opacity:.85}
+.btn:active{transform:scale(.97)}
+.btn-caramel{background:var(--caramel);color:var(--espresso)}
+.btn-ghost{border:1.5px solid var(--line);color:var(--cream)}
+
+.strip{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:40px}
+.strip div{flex:1;padding:16px 10px;text-align:center;border-right:1px solid var(--line)}
+.strip div:last-child{border-right:none}
+.strip .n{font-family:'PT Serif',serif;font-size:24px;font-weight:700;color:var(--caramel)}
+.strip .l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-top:3px}
+
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:26px;flex-wrap:wrap;gap:8px}
+h2{font-size:clamp(28px,6vw,44px);font-weight:700}
+.sec-tag{font-size:13px;color:var(--mute);font-style:italic}
+
+.menu-cat{margin-bottom:32px}
+.menu-cat:last-child{margin-bottom:0}
+.menu-cat h3{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--mint);margin-bottom:14px;font-family:'Golos Text';font-weight:600}
+.menu-items{display:grid;gap:0}
+.mi{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line)}
+.mi:last-child{border-bottom:none}
+.mi-name{font-size:16px;font-family:'PT Serif',serif;font-weight:700}
+.mi-desc{font-size:13px;color:var(--mute);margin-top:2px}
+.mi-price{font-family:'PT Serif',serif;font-size:18px;font-weight:700;color:var(--caramel);white-space:nowrap;margin-left:20px;flex-shrink:0}
+
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.ab{background:var(--wood);border-radius:12px;padding:22px;border-left:3px solid var(--mint)}
+.ab h3{font-size:17px;margin-bottom:8px}
+.ab p{font-size:14px;color:var(--mute);line-height:1.65}
+
+.book-wrap{background:var(--cream);color:var(--espresso);border-radius:14px;padding:40px 28px}
+.book-wrap h2{color:var(--espresso);margin-bottom:6px}
+.book-wrap > p{color:var(--mute);margin-bottom:26px;font-size:15px}
+.bform{display:grid;gap:14px;max-width:420px}
+.bform label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7A6E60;font-weight:600;display:block;margin-bottom:5px}
+.bform input,.bform select{width:100%;padding:13px 16px;border-radius:8px;border:1.5px solid #D5C9B8;background:#fff;color:var(--espresso);font-family:'Golos Text';font-size:15px}
+.bform input:focus,.bform select:focus{outline:none;border-color:var(--mint)}
+.bform .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bform button[type=submit]{padding:16px;border:none;border-radius:8px;background:var(--espresso);color:var(--cream);font-family:'Golos Text';font-weight:600;font-size:15px;cursor:pointer;transition:opacity .15s}
+.bform button[type=submit]:hover{opacity:.85}
+.book-ok{display:none;margin-top:16px;font-size:15px;color:#3e7a4e;font-weight:600;line-height:1.6}
+.book-fine{margin-top:14px;font-size:12px;color:#9B8E7B;line-height:1.6}
+
+.contacts-grid{display:grid;gap:8px;font-size:15px}
+.contacts-grid a{color:var(--caramel);text-decoration:none}
+.contacts-grid a:hover{text-decoration:underline}
+
+footer{border-top:1px solid var(--line);padding:22px 0 38px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--mute)}
+footer a{color:var(--caramel);text-decoration:none;font-weight:600}
+
+@media(max-width:560px){
+  .strip{flex-direction:column}
+  .strip div{border-right:none;border-bottom:1px solid var(--line)}
+  .strip div:last-child{border-bottom:none}
+  .bform .row2{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="demo-note">Демо-работа для портфолио · кофейня вымышленная · хочу такой сайт → <a href="https://t.me/avelexe" target="_blank" rel="noopener">@avelexe</a></div>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">МЯ<b>ТА</b></div>
+    <a class="btn-h" href="#bron">Забронировать</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Кофейня · Новосибирск</div>
+    <h1>Кофе,<br><em>который ты ждёшь</em></h1>
+    <div class="hero-sub">Авторские рецепты, свежая обжарка и место без суеты. <b>Два зала — тихий и живой.</b> Приходи один или со всеми.</div>
+    <div class="hero-cta">
+      <a class="btn btn-caramel" href="#bron">Забронировать столик</a>
+      <a class="btn btn-ghost" href="#menu">Меню</a>
+    </div>
+    <div class="strip">
+      <div><div class="n">8:00</div><div class="l">открываемся</div></div>
+      <div><div class="n">22:00</div><div class="l">закрываемся</div></div>
+      <div><div class="n">3 мин</div><div class="l">от метро</div></div>
+      <div><div class="n">2 зала</div><div class="l">тихий и живой</div></div>
+    </div>
+  </div>
+
+  <section id="menu">
+    <div class="sec-head">
+      <h2>Меню</h2>
+      <span class="sec-tag">всё свежее, ничего лишнего</span>
+    </div>
+
+    <div class="menu-cat">
+      <h3>Кофе</h3>
+      <div class="menu-items">
+        <div class="mi"><div><div class="mi-name">Эспрессо</div><div class="mi-desc">Двойной, обжарка Эфиопии — каждую неделю новый лот</div></div><div class="mi-price">180 ₽</div></div>
+        <div class="mi"><div><div class="mi-name">Капучино</div><div class="mi-desc">Молоко локальной фермы, бархатная пенка</div></div><div class="mi-price">280 ₽</div></div>
+        <div class="mi"><div><div class="mi-name">Флэт уайт</div><div class="mi-desc">Двойной ристретто, меньше молока — больше кофе</div></div><div class="mi-price">300 ₽</div></div>
+        <div class="mi"><div><div class="mi-name">Латте матча</div><div class="mi-desc">Церемониальный класс, овсяное или кокосовое молоко</div></div><div class="mi-price">330 ₽</div></div>
+        <div class="mi"><div><div class="mi-name">Авторский фильтр</div><div class="mi-desc">Рецепт меняется каждую неделю — спросите бариста</div></div><div class="mi-price">260 ₽</div></div>
+      </div>
+    </div>
+
+    <div class="menu-cat">
+      <h3>Еда</h3>
+      <div class="menu-items">
+        <div class="mi"><div><div class="mi-name">Круассан с маслом</div><div class="mi-desc">Слоёный, выпекаем каждое утро к 8:30</div></div><div class="mi-price">190 ₽</div></div>
+        <div class="mi"><div><div class="mi-name">Авокадо тост</div><div class="mi-desc">Ржаной, авокадо, яйцо-пашот, микрозелень</div></div><div class="mi-price">430 ₽</div></div>
+        <div class="mi"><div><div class="mi-name">Сырники</div><div class="mi-desc">Домашний творог, сметана, варенье из инжира</div></div><div class="mi-price">380 ₽</div></div>
+        <div class="mi"><div><div class="mi-name">Гранола с йогуртом</div><div class="mi-desc">Греческий йогурт, домашняя гранола, ягоды</div></div><div class="mi-price">350 ₽</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>О нас</h2>
+      <span class="sec-tag">почему возвращаются</span>
+    </div>
+    <div class="about-grid">
+      <div class="ab">
+        <h3>Своя обжарка</h3>
+        <p>Зерно закупаем напрямую у фермеров Эфиопии и Колумбии. Обжариваем сами — не старше недели на полке.</p>
+      </div>
+      <div class="ab">
+        <h3>Два зала</h3>
+        <p>Тихий — для работы и чтения, без фоновой музыки. Живой — для встреч, где не стесняются смеяться.</p>
+      </div>
+      <div class="ab">
+        <h3>Бронь за минуту</h3>
+        <p>Стол будет ждать тебя — а не ты его. Подтвердим бронь в течение 15 минут.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="bron">
+    <h2 style="margin-bottom:24px">Забронировать столик</h2>
+    <div class="book-wrap">
+      <p>Укажите дату, время и количество гостей — подтвердим бронь в течение 15 минут.</p>
+      <form class="bform" id="cform">
+        <div>
+          <label for="c1">Ваше имя</label>
+          <input id="c1" type="text" placeholder="Как к вам обращаться" required>
+        </div>
+        <div class="row2">
+          <div>
+            <label for="c2">Дата</label>
+            <input id="c2" type="date" required>
+          </div>
+          <div>
+            <label for="c3">Время</label>
+            <input id="c3" type="time" min="08:00" max="21:30" required>
+          </div>
+        </div>
+        <div>
+          <label for="c4">Количество гостей</label>
+          <select id="c4">
+            <option>1 гость</option>
+            <option selected>2 гостя</option>
+            <option>3 гостя</option>
+            <option>4 гостя</option>
+            <option>5 и более</option>
+          </select>
+        </div>
+        <div>
+          <label for="c5">Телефон</label>
+          <input id="c5" type="tel" placeholder="+7 ___ ___-__-__" required>
+        </div>
+        <button type="submit">Забронировать</button>
+      </form>
+      <div class="book-ok" id="cok"></div>
+      <div class="book-fine">🔌 Демо-форма. На вашем сайте заявка уходит прямо в Telegram администратору — с именем, датой и временем гостя.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Контакты</h2>
+      <span class="sec-tag">найдёте нас</span>
+    </div>
+    <div class="contacts-grid">
+      <div>Новосибирск, ул. Ленина, 12 — 3 минуты от метро Площадь Ленина</div>
+      <div>Ежедневно 8:00–22:00</div>
+      <a href="tel:+79130000000">+7 913 000-00-00</a>
+      <div>Telegram · Instagram · ВКонтакте — @coffeemyata</div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div>МЯТА · демо-лендинг</div>
+  <div>Сайт за 3 дня — <a href="https://t.me/avelexe" target="_blank" rel="noopener">напишите мне</a></div>
+</footer>
+
+<script>
+(function(){
+  var d = document.getElementById('c2');
+  d.min = new Date().toISOString().split('T')[0];
+  d.value = new Date().toISOString().split('T')[0];
+
+  document.getElementById('cform').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name  = document.getElementById('c1').value;
+    var date  = document.getElementById('c2').value;
+    var time  = document.getElementById('c3').value;
+    var guests= document.getElementById('c4').value;
+    var ok    = document.getElementById('cok');
+    ok.textContent = 'Спасибо, ' + name + '! Стол на ' + guests.toLowerCase() +
+      ' забронирован на ' + date + ' в ' + time +
+      '. Подтверждение придёт на ваш телефон в течение 15 минут.';
+    ok.style.display = 'block';
+    this.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>
