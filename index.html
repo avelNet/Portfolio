@@ -4,7 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="only light">
-<title>Павел — лендинги под ваш бизнес · любая ниша</title>
+<title>Павел — лендинги под ваш бизнес · за 3 дня · от 12 000 ₽</title>
+<meta name="description" content="Делаю продающие лендинги под любую нишу за 3 дня. Не шаблон — дизайн с нуля. Приём заявок, онлайн-запись, карты. От 12 000 ₽.">
+
+<!-- Open Graph — превью в Telegram, WhatsApp, соцсетях -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://avelnet.github.io/Portfolio/">
+<meta property="og:title" content="Лендинг под ваш бизнес — за 3 дня · от 12 000 ₽">
+<meta property="og:description" content="Не шаблон — дизайн с нуля под вашу нишу. Черновик за 1–2 дня. Приём заявок, онлайн-запись, карты. Напишите в Telegram — пришлю примеры бесплатно.">
+<meta property="og:image" content="https://avelnet.github.io/Portfolio/og.png">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -18,18 +29,33 @@ body{font-family:'Golos Text',sans-serif;background:var(--night);color:var(--pap
 h1,h2,h3{font-family:'Unbounded',sans-serif;font-weight:700;letter-spacing:-.01em}
 
 /* hero */
-.hero{padding:72px 0 56px}
+.hero{padding:72px 0 48px}
 .hello{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:6px 14px}
-.dot{width:7px;height:7px;border-radius:50%;background-image:linear-gradient(#5BC77E,#5BC77E)}
+.dot{width:7px;height:7px;border-radius:50%;background:#5BC77E;flex-shrink:0}
 .hero h1{font-size:clamp(30px,7.4vw,56px);line-height:1.12;margin:22px 0 18px}
 .hero h1 span{color:var(--amber)}
 .hero p{font-size:16px;color:var(--mute);max-width:520px}
 .hero p b{color:var(--paper);font-weight:500}
-.cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:12px}
+.cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:12px;transition:opacity .15s}
+.btn:hover{opacity:.88}
 .btn:active{transform:scale(.97)}
-.btn-amber{background-image:linear-gradient(var(--amber),var(--amber));color:#1a1405}
+.btn-amber{background:var(--amber);color:#1a1405}
 .btn-ghost{border:1.5px solid var(--line);color:var(--paper)}
+.btn-insta{border:1.5px solid var(--line);color:var(--mute);font-size:14px;padding:12px 18px}
+.btn-insta:hover{color:var(--paper);border-color:#9b6dd6}
+
+/* stats strip */
+.stats{display:flex;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:48px}
+.stat{flex:1;padding:18px 20px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Unbounded',sans-serif;font-size:22px;font-weight:700;color:var(--amber);line-height:1}
+.stat-l{font-size:12px;color:var(--mute);margin-top:4px}
+@media(max-width:540px){
+  .stats{flex-direction:column}
+  .stat{border-right:none;border-bottom:1px solid var(--line)}
+  .stat:last-child{border-bottom:none}
+}
 
 section{padding:48px 0}
 h2{font-size:clamp(22px,5vw,32px);margin-bottom:8px}
@@ -37,10 +63,10 @@ h2{font-size:clamp(22px,5vw,32px);margin-bottom:8px}
 
 /* works */
 .works{display:grid;gap:18px}
-.work{display:block;text-decoration:none;background-image:linear-gradient(var(--panel),var(--panel));border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .2s}
+.work{display:block;text-decoration:none;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .2s}
 .work:hover{border-color:var(--amber)}
 .w-bar{display:flex;align-items:center;gap:6px;padding:10px 16px;border-bottom:1px solid var(--line)}
-.w-bar i{width:10px;height:10px;border-radius:50%;background-image:linear-gradient(var(--line),var(--line))}
+.w-bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
 .w-bar .url{margin-left:8px;font-size:12px;color:var(--mute)}
 .w-body{padding:20px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
 .w-body h3{font-size:17px;color:var(--paper)}
@@ -49,9 +75,16 @@ h2{font-size:clamp(22px,5vw,32px);margin-bottom:8px}
 .chips i{width:22px;height:22px;border-radius:6px;border:1px solid rgba(255,255,255,.12)}
 .w-open{font-size:13px;color:var(--amber);font-weight:600;padding:16px 20px;border-top:1px solid var(--line);display:block}
 
+/* why me */
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.why-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.why-card .icon{font-size:24px;margin-bottom:12px;line-height:1}
+.why-card h3{font-size:14px;color:var(--paper);margin-bottom:6px;font-family:'Unbounded',sans-serif;font-size:13px}
+.why-card p{font-size:13px;color:var(--mute);line-height:1.55}
+
 /* services */
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.sv{background-image:linear-gradient(var(--panel),var(--panel));border:1px solid var(--line);border-radius:14px;padding:20px}
+.sv{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
 .sv h3{font-size:15px;color:var(--amber);margin-bottom:8px}
 .sv p{font-size:14px;color:var(--mute)}
 
@@ -59,32 +92,48 @@ h2{font-size:clamp(22px,5vw,32px);margin-bottom:8px}
 .steps{display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
 .step{padding:0 0 26px 22px;position:relative}
 .step:last-child{padding-bottom:0}
-.step::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background-image:linear-gradient(var(--amber),var(--amber))}
+.step::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--amber)}
 .step h3{font-size:15px}
 .step p{font-size:14px;color:var(--mute);margin-top:4px}
 
 /* pricing */
 .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.pr{background-image:linear-gradient(var(--panel),var(--panel));border:1px solid var(--line);border-radius:16px;padding:24px;position:relative}
+.pr{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;position:relative}
 .pr.hot{border-color:var(--amber)}
-.pr .flag{position:absolute;top:-11px;left:20px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background-image:linear-gradient(var(--amber),var(--amber));color:#1a1405;font-weight:700;padding:4px 10px;border-radius:99px}
+.pr .flag{position:absolute;top:-11px;left:20px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--amber);color:#1a1405;font-weight:700;padding:4px 10px;border-radius:99px}
 .pr h3{font-size:16px;margin-bottom:6px}
 .pr .cost{font-family:'Unbounded';font-size:26px;font-weight:700;color:var(--amber);margin-bottom:14px}
 .pr .cost small{font-family:'Golos Text';font-size:13px;color:var(--mute);font-weight:400}
 .pr ul{list-style:none;display:grid;gap:8px}
 .pr li{font-size:14px;color:var(--mute);padding-left:20px;position:relative}
 .pr li::before{content:"—";position:absolute;left:0;color:var(--amber)}
+.pr-guarantee{margin-top:16px;padding:12px 16px;background:rgba(242,180,65,.06);border:1px solid rgba(242,180,65,.2);border-radius:10px;font-size:13px;color:var(--mute);line-height:1.5}
+.pr-guarantee b{color:var(--amber);font-weight:600}
 .pr-note{margin-top:16px;font-size:14px;color:var(--mute);text-align:center}
 .pr-note b{color:var(--paper);font-weight:500}
 
+/* FAQ */
+.faq{display:grid;gap:8px}
+.faq-item{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.faq-q{width:100%;background:none;border:none;color:var(--paper);font-family:'Golos Text',sans-serif;font-size:15px;font-weight:600;text-align:left;padding:18px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q:hover{color:var(--amber)}
+.faq-arrow{font-size:18px;color:var(--mute);transition:transform .2s;flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(45deg);color:var(--amber)}
+.faq-a{font-size:14px;color:var(--mute);padding:0 20px;max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:18px}
+
 /* final CTA */
-.final{background-image:linear-gradient(var(--panel),var(--panel));border:1px solid var(--line);border-radius:20px;padding:40px 24px;text-align:center}
+.final{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:40px 24px;text-align:center}
 .final h2{margin-bottom:12px}
 .final p{color:var(--mute);max-width:440px;margin:0 auto 24px;font-size:15px}
-.tg{font-size:14px;color:var(--mute);margin-top:14px}
+.final-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.tg{font-size:14px;color:var(--mute);margin-top:16px}
 .tg a{color:var(--amber);text-decoration:none;font-weight:600}
 
-footer{padding:28px 0 40px;font-size:13px;color:var(--mute);text-align:center}
+footer{padding:28px 0 40px;font-size:13px;color:var(--mute);text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
+footer a{color:var(--mute);text-decoration:none}
+footer a:hover{color:var(--amber)}
+
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -99,7 +148,18 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--mute);text-align:center}
     <div class="cta-row">
       <a class="btn btn-amber" href="https://t.me/avelexe" target="_blank" rel="noopener">Написать в Telegram</a>
       <a class="btn btn-ghost" href="#works">Смотреть работы</a>
+      <a class="btn btn-insta" href="https://www.instagram.com/avel.weblab/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
     </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-n">3 дня</div><div class="stat-l">черновик готов</div></div>
+    <div class="stat"><div class="stat-n">3 ниши</div><div class="stat-l">в портфолио</div></div>
+    <div class="stat"><div class="stat-n">50%</div><div class="stat-l">предоплата, остаток по факту</div></div>
+    <div class="stat"><div class="stat-n">2 правки</div><div class="stat-l">включены в цену</div></div>
   </div>
 
   <section id="works">
@@ -111,7 +171,7 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--mute);text-align:center}
         <div class="w-bar"><i></i><i></i><i></i><span class="url">пудра · студия маникюра</span></div>
         <div class="w-body">
           <div><h3>ПУДРА — студия маникюра</h3><p>Интерактивная палитра оттенков, прайс, мастера, форма онлайн-записи.</p></div>
-          <div class="chips"><i style="background-image:linear-gradient(#F7F3EE,#F7F3EE)"></i><i style="background-image:linear-gradient(#B04A5A,#B04A5A)"></i><i style="background-image:linear-gradient(#2B2024,#2B2024)"></i></div>
+          <div class="chips"><i style="background:#F7F3EE"></i><i style="background:#B04A5A"></i><i style="background:#2B2024"></i></div>
         </div>
         <span class="w-open">Открыть демо →</span>
       </a>
@@ -120,7 +180,7 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--mute);text-align:center}
         <div class="w-bar"><i></i><i></i><i></i><span class="url">северный · барбершоп</span></div>
         <div class="w-body">
           <div><h3>СЕВЕРНЫЙ — барбершоп</h3><p>Прайс отрывными талонами, барберы, запись с выбором мастера.</p></div>
-          <div class="chips"><i style="background-image:linear-gradient(#16181D,#16181D)"></i><i style="background-image:linear-gradient(#C08A3E,#C08A3E)"></i><i style="background-image:linear-gradient(#E9E4DA,#E9E4DA)"></i></div>
+          <div class="chips"><i style="background:#16181D"></i><i style="background:#C08A3E"></i><i style="background:#E9E4DA"></i></div>
         </div>
         <span class="w-open">Открыть демо →</span>
       </a>
@@ -129,11 +189,38 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--mute);text-align:center}
         <div class="w-bar"><i></i><i></i><i></i><span class="url">гараж №9 · автосервис</span></div>
         <div class="w-body">
           <div><h3>ГАРАЖ №9 — автосервис</h3><p>Заявка в виде наряд-заказа: марка, проблема, телефон — мастеру в Telegram.</p></div>
-          <div class="chips"><i style="background-image:linear-gradient(#ECEDEA,#ECEDEA)"></i><i style="background-image:linear-gradient(#F26A1B,#F26A1B)"></i><i style="background-image:linear-gradient(#1C1E20,#1C1E20)"></i></div>
+          <div class="chips"><i style="background:#ECEDEA"></i><i style="background:#F26A1B"></i><i style="background:#1C1E20"></i></div>
         </div>
         <span class="w-open">Открыть демо →</span>
       </a>
 
+    </div>
+  </section>
+
+  <section>
+    <h2>Почему я</h2>
+    <div class="sub">Без агентской накрутки и без шаблонов из конструктора.</div>
+    <div class="why">
+      <div class="why-card">
+        <div class="icon">🧑‍💻</div>
+        <h3>Говорите напрямую со мной</h3>
+        <p>Не с менеджером и не с «командой». Я сам принимаю задачу, сам делаю, сам правлю.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🎨</div>
+        <h3>Дизайн с нуля</h3>
+        <p>Каждый лендинг — под вашу нишу и цвет бренда. Не Tilda-шаблон, который видели тысячи раз.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">⚡</div>
+        <h3>Быстро и предсказуемо</h3>
+        <p>Черновик через 1–2 дня. Цена известна сразу — не после брифа и трёх звонков.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🛠️</div>
+        <h3>Сдаю под ключ</h3>
+        <p>Домен, хостинг, формы, карты — всё настраиваю сам. Вам остаётся только принимать заявки.</p>
+      </div>
     </div>
   </section>
 
@@ -159,7 +246,7 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--mute);text-align:center}
           <li>одностраничный сайт под вашу нишу</li>
           <li>приём заявок с уведомлением в Telegram</li>
           <li>идеально выглядит с телефона</li>
-          <li>запуск, домен, 2 раунда правок</li>
+          <li>домен + запуск + 2 раунда правок</li>
           <li>черновик за 1–2 дня после обсуждения</li>
         </ul>
       </div>
@@ -170,11 +257,14 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--mute);text-align:center}
         <div class="cost">от 15 000 ₽</div>
         <ul>
           <li>всё из базового тарифа</li>
-          <li>подключение онлайн-записи: YClients / DIKIDI настрою под ключ, или Telegram-бот</li>
+          <li>онлайн-запись: YClients / DIKIDI под ключ или Telegram-бот</li>
           <li>калькулятор цены или квиз — под задачу бизнеса</li>
         </ul>
       </div>
 
+    </div>
+    <div class="pr-guarantee">
+      <b>Гарантия:</b> если черновик вам не понравится и вы решите не продолжать — верну предоплату. Без споров.
     </div>
     <div class="pr-note"><b>Большинство проектов — в пределах 12–20 тысяч.</b> Точный расчёт под вашу задачу — бесплатно в Telegram.</div>
   </section>
@@ -190,17 +280,74 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--mute);text-align:center}
   </section>
 
   <section>
+    <h2>Частые вопросы</h2>
+    <div class="sub">Отвечаю на то, что спрашивают чаще всего.</div>
+    <div class="faq">
+
+      <div class="faq-item">
+        <button class="faq-q">Я не разбираюсь в технологиях — справлюсь?<span class="faq-arrow">+</span></button>
+        <div class="faq-a">Да. Всё техническое беру на себя: домен, хостинг, формы, карты. После запуска покажу, как самому менять цены, фото и тексты — это займёт 10 минут.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Что если мне не понравится черновик?<span class="faq-arrow">+</span></button>
+        <div class="faq-a">Сначала правим вместе — в цену включено 2 раунда правок. Если после первого черновика вы решите не продолжать — возвращаю предоплату. Без споров.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Сайт на конструкторе или написан вручную?<span class="faq-arrow">+</span></button>
+        <div class="faq-a">Пишу код руками — без Tilda, Wix и других конструкторов. Поэтому сайт грузится быстро, не зависит от подписки стороннего сервиса и выглядит уникально.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Нужно ли мне платить за хостинг отдельно?<span class="faq-arrow">+</span></button>
+        <div class="faq-a">Хостинг включён в стоимость. Домен (.ru / .com) — около 200–600 ₽ в год, оплачивается отдельно на ваш аккаунт. Помогу выбрать и зарегистрировать.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Вы работаете только по своему городу?<span class="faq-arrow">+</span></button>
+        <div class="faq-a">Нет, работаю удалённо с клиентами по всей России. Всё обсуждаем в Telegram — никаких встреч не нужно.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
     <div class="final">
       <h2>Обсудим ваш сайт?</h2>
       <p>Напишите пару слов о вашем бизнесе — любая ниша, любой формат. В ответ пришлю подходящие примеры и точный расчёт. Бесплатно и ни к чему не обязывает.</p>
-      <a class="btn btn-amber" href="https://t.me/avelexe" target="_blank" rel="noopener">Написать в Telegram</a>
-      <div class="tg">или напрямую: <b style="color:var(--amber);font-weight:600">@avelexe</b></div>
+      <div class="final-btns">
+        <a class="btn btn-amber" href="https://t.me/avelexe" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/avel.weblab/" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+      </div>
+      <div class="tg">или напрямую: <a href="https://t.me/avelexe" target="_blank" rel="noopener">@avelexe</a></div>
     </div>
   </section>
 
 </main>
 
-<footer>Павел · лендинги под любую нишу · Telegram: @avelexe</footer>
+<footer>
+  <span>Павел · лендинги под любую нишу</span>
+  <span>
+    <a href="https://t.me/avelexe" target="_blank" rel="noopener">Telegram: @avelexe</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/avel.weblab/" target="_blank" rel="noopener">Instagram: @avel.weblab</a>
+  </span>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
 
 </body>
 </html>
